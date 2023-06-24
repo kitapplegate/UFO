@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r cars, message=FALSE, warning=FALSE, include=FALSE}
+```{r cars, echo=TRUE, message=FALSE, warning=FALSE}
 # Load required libraries
 
 # The 'tidyverse' library is a collection of packages for data manipulation and visualization.
@@ -37,16 +37,13 @@ ufo_sightings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 # Read the 'shape.List.csv' file from the local directory and store it in the 'shape.List' variable.
 shape.List <- read.csv("raw.Data/shape.List.csv")
 
-# Overall, this code loads the necessary libraries, including the powerful 'tidyverse' collection, which provides a suite of packages for data manipulation. The 'lubridate', 'chron', 'scales', and 'viridis' libraries offer additional functionality for working with dates, times, scaling, and visualizations. The code then reads the 'ufo_sightings.csv' file from the specified URL and stores it in the 'ufo_sightings' variable. Additionally, it reads the 'shape.List.csv' file from the local directory and stores it in the 'shape.List' variable for further analysis.
-
-
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo=TRUE}
 # Data Manipulation
 
 # Join the 'ufo_sightings' and 'shape.List' dataframes based on the 'shape' and 'Original' columns,
@@ -108,7 +105,7 @@ sightings.Mutate$Month <- as.factor(sightings.Mutate$Month)
 
 ```
 
-```{r paged.print=FALSE}
+```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
 
 # Data Visualization
 
@@ -136,7 +133,7 @@ ggplot(sightings_summary, aes(x = Month, y = total, fill = day_part, color = day
 
 ```
 
-```{r}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 sighting_times <- strptime(sightings.Mutate$Time, format = "%H:%M:%S")
 
 # Extract the hour component from the POSIXlt format
@@ -147,7 +144,7 @@ hist(sighting_hours, breaks = 25, xlab = "Hour", ylab = "Frequency", main = "UFO
      xlim = c(.5, 24))
 ```
 
-```{r}
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 heatmap_data <- sightings.Mutate %>%
   group_by(day_part, shape) %>%
   summarise(count = n()) %>%
@@ -163,4 +160,4 @@ ggplot(heatmap_data, aes(x = shape, y = day_part, fill = count)) +
 
 
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
