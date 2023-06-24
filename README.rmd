@@ -5,6 +5,8 @@ date: "2023-06-20"
 output: github_document
 ---
 
+This Data is from the [National UFO Reporting Center](https://nuforc.org/webreports/ndxshape.html) , cleaned and enriched with data from sunrise-sunset.org by Jon Harmon. IT was part of the this week #tidytuesday data set. 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -38,9 +40,7 @@ shape.List <- read.csv("raw.Data/shape.List.csv")
 
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
 ```{r pressure, echo=TRUE}
 # Data Manipulation
