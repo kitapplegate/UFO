@@ -123,6 +123,15 @@ ggplot(sightings_summary, aes(x = Month, y = total, fill = day_part, color = day
 
 ![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
+The provided bar graph illustrates the frequency of sightings
+categorized by month, accompanied by the corresponding time of day
+during which these sightings took place. Notably, the month of July
+stands out as the period with the highest number of reported sightings,
+particularly during the dusk hours. Based on this analysis, it is
+reasonable to hypothesize that the observed pattern could potentially be
+attributed to the presence of fireworks, thereby suggesting a plausible
+causal relationship between fireworks and the reported sightings.
+
 ``` r
 sighting_times <- strptime(sightings.Mutate$Time, format = "%H:%M:%S")
 
@@ -135,6 +144,11 @@ hist(sighting_hours, breaks = 25, xlab = "Hour", ylab = "Frequency", main = "UFO
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+The depicted histogram showcases the distribution of sightings within a
+24-hour timeframe. It is evident that the majority of sightings took
+place during the late night and early morning hours, specifically after
+midnight and before dawn.
 
 ``` r
 heatmap_data <- sightings.Mutate %>%
@@ -151,3 +165,9 @@ ggplot(heatmap_data, aes(x = shape, y = day_part, fill = count)) +
 ```
 
 ![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+
+The depicted heat map illustrates the occurrences of various shapes
+alongside the corresponding time of day during which they were sighted.
+Notably, the nighttime period stands out as having the highest frequency
+of shape sightings, with “light” being the most commonly reported shape,
+closely followed by “other.”
