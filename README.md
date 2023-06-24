@@ -3,6 +3,11 @@ UFO Sightings
 Kit Applegate
 2023-06-20
 
+This Data is from the [National UFO Reporting
+Center](https://nuforc.org/webreports/ndxshape.html) , cleaned and
+enriched with data from sunrise-sunset.org by Jon Harmon. IT was part of
+the this week \#tidytuesday data set.
+
 ``` r
 # Load required libraries
 
@@ -29,10 +34,6 @@ ufo_sightings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 # Read the 'shape.List.csv' file from the local directory and store it in the 'shape.List' variable.
 shape.List <- read.csv("raw.Data/shape.List.csv")
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
 
 ``` r
 # Data Manipulation
