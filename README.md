@@ -1,16 +1,9 @@
----
-title: "UFO Sightings"
-author: "Kit Applegate"
-date: "2023-06-20"
-output: github_document
----
+UFO Sightings
+================
+Kit Applegate
+2023-06-20
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
-```{r cars, echo=TRUE, message=FALSE, warning=FALSE}
+``` r
 # Load required libraries
 
 # The 'tidyverse' library is a collection of packages for data manipulation and visualization.
@@ -35,14 +28,13 @@ ufo_sightings <- readr::read_csv('https://raw.githubusercontent.com/rfordatascie
 
 # Read the 'shape.List.csv' file from the local directory and store it in the 'shape.List' variable.
 shape.List <- read.csv("raw.Data/shape.List.csv")
-
 ```
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=TRUE}
+``` r
 # Data Manipulation
 
 # Join the 'ufo_sightings' and 'shape.List' dataframes based on the 'shape' and 'Original' columns,
@@ -100,12 +92,9 @@ sightings.Mutate$Time <- times(format(sightings.Mutate$Time, format = "%H:%M:%S"
 
 # Convert the 'Month' column in the 'sightings.Mutate' dataframe to a factor.
 sightings.Mutate$Month <- as.factor(sightings.Mutate$Month)
-
-
 ```
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, paged.print=FALSE}
-
+``` r
 # Data Visualization
 
 # Group the 'sightings.Mutate' dataframe by 'Month' and 'day_part', and calculate the total number of sightings in each group.
@@ -129,10 +118,11 @@ ggplot(sightings_summary, aes(x = Month, y = total, fill = day_part, color = day
        x = "") +
   scale_fill_manual(values = rainbow(length(unique(sightings.Mutate$day_part)))) +
   scale_color_manual(values = rainbow(length(unique(sightings.Mutate$day_part))))
-
 ```
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+
+``` r
 sighting_times <- strptime(sightings.Mutate$Time, format = "%H:%M:%S")
 
 # Extract the hour component from the POSIXlt format
@@ -143,7 +133,9 @@ hist(sighting_hours, breaks = 25, xlab = "Hour", ylab = "Frequency", main = "UFO
      xlim = c(.5, 24))
 ```
 
-```{r echo=TRUE, message=FALSE, warning=FALSE}
+![](README_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+``` r
 heatmap_data <- sightings.Mutate %>%
   group_by(day_part, shape) %>%
   summarise(count = n()) %>%
@@ -157,6 +149,4 @@ ggplot(heatmap_data, aes(x = shape, y = day_part, fill = count)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-
-
-
+![](README_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
